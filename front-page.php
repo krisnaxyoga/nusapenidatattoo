@@ -1,142 +1,14 @@
 <?php get_template_part('template-parts/header'); ?>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "TattooParlor",
-      "@id": "https://nusapenidatattoo.com/#tattoo-studio",
-      "name": "Nusa Penida Tattoo",
-      "url": "https://nusapenidatattoo.com/",
-      "logo": "https://nusapenidatattoo.com/wp-content/uploads/2025/10/nusa-penida-tatto.png",
-      "image": [
-        "https://nusapenidatattoo.com/wp-content/uploads/2025/10/anime-tatto-naruto-nusapenidattato.webp",
-        "https://nusapenidatattoo.com/wp-content/uploads/2025/10/manta-animal-and-traditional-balinese-tatto-nusapenidatto.webp"
-      ],
-      "description": "Professional tattoo studio in Nusa Penida, Bali, specializing in fine line and minimalist tattoos for international travelers. Safe, sterile, and custom tattoo designs.",
-      "priceRange": "$$",
-      "telephone": "+6285792283479",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Nusa Penida",
-        "addressLocality": "Nusa Penida",
-        "addressRegion": "Bali",
-        "addressCountry": "ID"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-8.7278",
-        "longitude": "115.5444"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "10:00",
-        "closes": "21:00"
-      },
-      "sameAs": [
-        "https://www.instagram.com/dwiki_balinusa",
-        "https://www.tiktok.com/@dwiki_balinusa",
-        "https://wa.me/6285792283479"
-      ],
-      "areaServed": {
-        "@type": "TouristDestination",
-        "name": "Nusa Penida, Bali"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "bestRating": "5",
-        "ratingCount": "27"
-      },
-      "makesOffer": {
-        "@type": "Offer",
-        "itemOffered": [
-          {
-            "@type": "Service",
-            "name": "Fineline Tattoo",
-            "description": "Minimalist and fine line tattoo designs ideal for travelers visiting Bali."
-          },
-          {
-            "@type": "Service",
-            "name": "Custom Tattoo Design",
-            "description": "Personalized tattoo designs created by professional tattoo artists."
-          }
-        ]
-      }
-    },
-
-    {
-      "@type": "FAQPage",
-      "@id": "https://nusapenidatattoo.com/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is fineline tattoo suitable for first-time tattoo clients?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Fineline tattoos are ideal for first-time clients because they are minimalist, less painful, and heal faster compared to larger tattoo styles."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is it safe to get a tattoo while traveling in Nusa Penida?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Nusa Penida Tattoo follows strict hygiene standards using sterile equipment and professional procedures, making it safe for international travelers."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does a fineline tattoo take to heal?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Fineline tattoos usually heal within 7–14 days. Proper aftercare is essential, especially when traveling in tropical climates like Bali."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I book a tattoo appointment online?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. You can easily book your tattoo session via WhatsApp or social media before or during your visit to Nusa Penida."
-          }
-        }
-      ]
-    },
-
-    {
-      "@type": "Review",
-      "@id": "https://nusapenidatattoo.com/#review-1",
-      "itemReviewed": {
-        "@type": "TattooParlor",
-        "name": "Nusa Penida Tattoo"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "International Traveler"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "reviewBody": "Amazing fineline tattoo experience in Nusa Penida. Very clean studio, professional artist, and perfect for travelers looking for minimalist tattoo designs."
-    }
-
-  ]
-}
-</script>
-
+<?php
+// ---- Contact details: single source of truth for NAP consistency (local SEO) ----
+$whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
+$phone    = get_theme_mod('nusatatto_phone', '+62 857-9228-3479');
+$email    = get_theme_mod('nusatatto_email', 'info@nusapenidatattoo.com');
+$address  = get_theme_mod('nusatatto_address', 'Jl. Raya Nusa Penida, Bali 80771');
+$tel_link = preg_replace('/[^0-9+]/', '', $phone);
+$book_url = esc_url(home_url('/book'));
+$wa_book  = 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Hi nusapenidatattoo.com, I want to book a tattoo session');
+?>
 
 <!-- Hero Section -->
 <?php
@@ -144,7 +16,6 @@ $hero_headline = get_theme_mod('nusatatto_hero_headline', 'Nusa Penida Tattoo �
 $hero_description = get_theme_mod('nusatatto_hero_description', 'Experience the art of tattooing in paradise. Our certified artists in Nusa Penida create custom designs that tell your Bali story — with care, creativity, and clean precision.');
 $hero_bg_id = get_theme_mod('nusatatto_hero_bg', '');
 $hero_bg_url = $hero_bg_id ? wp_get_attachment_image_url($hero_bg_id, 'full') : get_template_directory_uri() . '/assets/images/hero-bg.jpg';
-$whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
 ?>
 <section class="hero bg-gradient-dark">
     <!-- Background Image Overlay -->
@@ -158,12 +29,36 @@ $whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
             <?php echo esc_html($hero_description); ?>
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>?text=Hello,Nusa Penida Tattoo%20I%20want%20to%20book%20a%20tattoo%20session" target="_blank" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift">
+            <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>?text=Hi%20nusapenidatattoo.com,%20I%20want%20to%20book%20a%20tattoo%20session" target="_blank" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift">
                 Book Your Tattoo
             </a>
             <a href="#portfolio" class="glass-lg px-8 py-4 rounded-full font-semibold hover-lift text-[#f5f5f5]">
                 View Our Portfolio
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Intro / Quick Answer — optimized for AI Overviews & featured snippets -->
+<section class="py-16 px-4 bg-gradient-dark">
+    <div class="max-w-4xl mx-auto">
+        <div class="glass-lg rounded-2xl p-8 md:p-10 seo-answer">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#f5f5f5]">Tattoo Studio in Nusa Penida, Bali</h2>
+            <p class="text-gray-300 leading-relaxed mb-6">
+                <strong class="text-[#f5f5f5]">Nusa Penida Tattoo</strong> is a professional, fully-sterile tattoo studio on Nusa Penida island, Bali. We create custom <strong class="text-[#f5f5f5]">fine-line, minimalist, blackwork and traditional Balinese tattoos</strong> for international travelers — with English-speaking artists, <strong class="text-[#f5f5f5]">walk-ins welcome</strong>, and prices starting from <strong class="text-[#d4af37]">IDR 600,000</strong>.
+            </p>
+            <ul class="grid sm:grid-cols-2 gap-3 text-gray-300 mb-8">
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">📍</span> Nusa Penida, Bali — near Toyapakeh harbor &amp; Crystal Bay</li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🕙</span> Open daily, 10:00 AM – 9:00 PM</li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">💸</span> Tattoos from IDR 600,000</li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">✅</span> Walk-ins welcome — no appointment needed</li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🎨</span> Fine-line, minimalist, blackwork &amp; custom Balinese</li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🗣️</span> English-speaking, certified artists</li>
+            </ul>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="<?php echo $book_url; ?>" class="btn-glass-accent px-6 py-3 rounded-full font-semibold text-center">Book Your Tattoo</a>
+                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="glass px-6 py-3 rounded-full font-semibold text-center text-[#f5f5f5] hover:bg-[#25D366] hover:text-white transition-all">WhatsApp Us</a>
+            </div>
         </div>
     </div>
 </section>
@@ -347,6 +242,52 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
     </div>
 </section>
 
+<!-- Tattoo Styles & Pricing — commercial intent + AI-extractable -->
+<section id="pricing" class="py-20 px-4 bg-gradient-dark">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-[#f5f5f5]">Tattoo Styles &amp; Starting Prices in Nusa Penida</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">Transparent pricing with no hidden fees. Small fine-line tattoos start from <strong class="text-[#d4af37]">IDR 600,000</strong> — the final quote depends on size, detail and placement, and we always confirm it before we start.</p>
+        </div>
+        <div class="glass-lg rounded-2xl overflow-x-auto">
+            <table class="w-full text-left min-w-[520px]">
+                <thead>
+                    <tr class="border-b border-white border-opacity-10 text-[#f5f5f5]">
+                        <th class="px-6 py-4 font-semibold">Size</th>
+                        <th class="px-6 py-4 font-semibold">Best for</th>
+                        <th class="px-6 py-4 font-semibold text-right">Starting price</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-300">
+                    <tr class="border-b border-white border-opacity-5">
+                        <td class="px-6 py-4 font-medium text-[#f5f5f5]">Small (up to 5 cm)</td>
+                        <td class="px-6 py-4">Fine-line, minimalist, lettering</td>
+                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]">IDR 600,000</td>
+                    </tr>
+                    <tr class="border-b border-white border-opacity-5">
+                        <td class="px-6 py-4 font-medium text-[#f5f5f5]">Medium (6–10 cm)</td>
+                        <td class="px-6 py-4">Detailed fine-line, small blackwork</td>
+                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]">IDR 1,200,000</td>
+                    </tr>
+                    <tr class="border-b border-white border-opacity-5">
+                        <td class="px-6 py-4 font-medium text-[#f5f5f5]">Large (11–20 cm)</td>
+                        <td class="px-6 py-4">Blackwork, tribal, Balinese</td>
+                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]">IDR 2,500,000</td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 font-medium text-[#f5f5f5]">Half sleeve / custom</td>
+                        <td class="px-6 py-4">Large custom &amp; Balinese pieces</td>
+                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]">from IDR 5,000,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-8">
+            <a href="<?php echo $book_url; ?>" class="inline-block btn-glass-accent px-8 py-4 rounded-full font-semibold">See full price guide &amp; book →</a>
+        </div>
+    </div>
+</section>
+
 <!-- FAQ Section -->
 <section id="faq" class="py-20 px-4 bg-gradient-dark">
     <div class="max-w-3xl mx-auto">
@@ -355,65 +296,104 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
             <!-- FAQ Item 1 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span class="font-semibold">Do I need to book in advance?</span>
+                    <span class="font-semibold">How much does a tattoo cost in Nusa Penida?</span>
                     <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-300">We recommend booking 1–2 days in advance, especially during high season to ensure availability of our artists.</p>
+                    <p class="text-gray-300">At Nusa Penida Tattoo, small fine-line tattoos start from IDR 600,000. Medium pieces start around IDR 1,200,000 and larger work from IDR 2,500,000. The final price depends on size, detail and placement — we always confirm the exact quote on WhatsApp before starting.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 2 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span class="font-semibold">Is your studio clean and safe?</span>
+                    <span class="font-semibold">Do you accept walk-in tattoos in Nusa Penida?</span>
                     <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-300">Absolutely. We follow strict hygiene standards, using sterile needles and professional-grade ink for every client.</p>
+                    <p class="text-gray-300">Yes, walk-ins are welcome every day from 10:00 AM to 9:00 PM. To guarantee your preferred time and artist, we recommend messaging us on WhatsApp first, especially during high season.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 3 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span class="font-semibold">Can I bring my own design?</span>
+                    <span class="font-semibold">What tattoo styles does Nusa Penida Tattoo offer?</span>
                     <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-300">Yes! Our artists love collaborating on custom designs that fit your story and bring your vision to life.</p>
+                    <p class="text-gray-300">We specialize in fine-line, minimalist, lettering, blackwork, tribal and traditional Balinese tattoos, as well as fully custom designs inspired by the ocean and island life.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 4 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span class="font-semibold">How long does it take?</span>
+                    <span class="font-semibold">Is it safe and hygienic to get a tattoo while traveling in Nusa Penida?</span>
                     <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-300">Depends on size and detail — our team will guide you during consultation. Typically ranges from 1-4 hours.</p>
+                    <p class="text-gray-300">Yes. We follow strict hygiene standards using single-use sterile needles, premium ink and professional procedures, making it safe for international travelers.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 5 -->
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span class="font-semibold">What about aftercare?</span>
+                    <span class="font-semibold">How long does a fine-line tattoo take to heal?</span>
                     <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </div>
                 <div class="faq-answer">
-                    <p class="text-gray-300">We provide complete aftercare guidance and support to ensure optimal healing and long-lasting results for your tattoo.</p>
+                    <p class="text-gray-300">Fine-line tattoos usually heal within 7 to 14 days. Proper aftercare is essential in a tropical climate like Bali — avoid sun, sea water and pools until fully healed. We provide complete aftercare guidance.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="font-semibold">Do your tattoo artists speak English?</span>
+                    <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-300">Yes. Our artists speak fluent English, so it is easy for international travelers to discuss design, size and placement clearly.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="font-semibold">Can I bring my own tattoo design?</span>
+                    <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-300">Absolutely. You can bring your own design or idea, and our artists will refine it or create a fully custom piece that fits your story.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="font-semibold">How do I book a tattoo appointment in Nusa Penida?</span>
+                    <svg class="faq-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-gray-300">You can <a href="<?php echo $book_url; ?>" class="text-[#d4af37] hover:underline">book in seconds on our booking page</a> or message us on WhatsApp at +62 857-9228-3479 before or during your visit to Nusa Penida.</p>
                 </div>
             </div>
         </div>
@@ -435,7 +415,7 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
                         </svg>
                         <div>
                             <div class="font-semibold text-[#f5f5f5]">Address</div>
-                            <div>Jl. Raya Nusa Penida, Bali 80771</div>
+                            <div><?php echo nl2br(esc_html($address)); ?></div>
                         </div>
                     </div>
                     <div class="flex gap-4">
@@ -443,8 +423,18 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                         </svg>
                         <div>
-                            <div class="font-semibold text-[#f5f5f5]">Phone</div>
-                            <div>+62 813-3756-7256</div>
+                            <div class="font-semibold text-[#f5f5f5]">Phone &amp; WhatsApp</div>
+                            <div><a href="tel:<?php echo esc_attr($tel_link); ?>" class="hover:text-[#d4af37] transition-colors"><?php echo esc_html($phone); ?></a></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="flex-shrink-0 mt-1 text-[#d4af37] w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-10 5L2 7"/>
+                        </svg>
+                        <div>
+                            <div class="font-semibold text-[#f5f5f5]">Email</div>
+                            <div><a href="mailto:<?php echo esc_attr($email); ?>" class="hover:text-[#d4af37] transition-colors"><?php echo esc_html($email); ?></a></div>
                         </div>
                     </div>
                     <div class="flex gap-4">
@@ -456,13 +446,14 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
                         </svg>
                         <div>
                             <div class="font-semibold text-[#f5f5f5]">Operating Hours</div>
-                            <div>Monday - Sunday: 10:00 AM - 8:00 PM</div>
+                            <div>Monday – Sunday: 10:00 AM – 9:00 PM</div>
+                            <div class="text-sm text-[#d4af37] mt-1">Walk-ins welcome — no appointment needed</div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-8">
                     <p class="text-gray-300 mb-4">We're located just minutes from the harbor — easy to reach for travelers staying in Toyapakeh, Crystal Bay, or anywhere on the island.</p>
-                    <a href="https://wa.me/6285792283479?text=Hello,%20I%20want%20to%20book%20a%20tattoo%20session" target="_blank" class="inline-block btn-glass-accent px-6 py-3 rounded-full font-semibold">
+                    <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>?text=Hi%20nusapenidatattoo.com,%20I%20want%20to%20book%20a%20tattoo%20session" target="_blank" class="inline-block btn-glass-accent px-6 py-3 rounded-full font-semibold">
                         Book via WhatsApp
                     </a>
                 </div>
@@ -562,10 +553,10 @@ $portfolio_desc = get_theme_mod('nusatatto_portfolio_desc', 'From fine-line art 
             <h2 class="text-4xl font-bold mb-6 text-[#f5f5f5]">Ready for Your Dream Tattoo?</h2>
             <p class="text-xl text-gray-300 mb-8">Book your tattoo session today and make your Bali trip unforgettable.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/6285792283479?text=Hello,%20I%20want%20to%20book%20a%20tattoo%20session" target="_blank" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift">
-                    Contact Now
+                <a href="<?php echo $book_url; ?>" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift">
+                    Book Your Tattoo
                 </a>
-                <a href="https://wa.me/6285792283479?text=Hello,%20I%20have%20a%20question%20about%20tattoo%20services" target="_blank" class="glass-lg px-8 py-4 rounded-full font-semibold hover-lift text-[#f5f5f5]">
+                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="glass-lg px-8 py-4 rounded-full font-semibold hover-lift text-[#f5f5f5]">
                     Chat WhatsApp
                 </a>
             </div>

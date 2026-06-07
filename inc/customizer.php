@@ -103,7 +103,7 @@ function nusatatto_customize_register($wp_customize) {
 
     // WhatsApp Number
     $wp_customize->add_setting('nusatatto_whatsapp', [
-        'default'           => '6281337567256',
+        'default'           => '6285792283479',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
 

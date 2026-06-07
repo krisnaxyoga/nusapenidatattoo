@@ -257,36 +257,6 @@ $tags = get_the_tags();
     </div>
 </section>
 
-<!-- Schema.org JSON-LD for SEO -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "<?php echo esc_js(get_the_title()); ?>",
-    "datePublished": "<?php echo get_the_date('c'); ?>",
-    "dateModified": "<?php echo get_the_modified_date('c'); ?>",
-    "wordCount": "<?php echo str_word_count(strip_tags(get_the_content())); ?>",
-    <?php if (has_post_thumbnail()) : ?>
-    "image": "<?php echo esc_url(get_the_post_thumbnail_url()); ?>",
-    <?php endif; ?>
-    "author": {
-        "@type": "Person",
-        "name": "<?php echo esc_js(get_the_author_meta('display_name')); ?>"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "<?php echo esc_url(get_site_icon_url()); ?>"
-        }
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "<?php echo esc_url(get_permalink()); ?>"
-    }
-}
-</script>
 
 <?php endwhile; endif; ?>
 

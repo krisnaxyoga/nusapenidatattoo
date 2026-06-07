@@ -51,7 +51,7 @@ get_template_part('template-parts/header'); ?>
 
                 <?php
                 $whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
-                $whatsapp_url = 'https://wa.me/' . $whatsapp . '?text=Hello,%20I%20need%20help%20finding%20information';
+                $whatsapp_url = 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Hi nusapenidatattoo.com, I want to book a tattoo session');
                 ?>
                 <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="glass-lg px-8 py-4 rounded-full font-semibold hover-lift text-[#f5f5f5]">
                     <svg class="inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">

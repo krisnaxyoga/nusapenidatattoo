@@ -28,3 +28,7 @@ add_filter( 'rest_pre_dispatch', function( $result, $server, $request ) {
     return $result;
 
 }, 10, 3 );
+
+
+// Load Theme Wording System
+require get_template_directory() . '/inc/theme-wording/lpz-init.php';

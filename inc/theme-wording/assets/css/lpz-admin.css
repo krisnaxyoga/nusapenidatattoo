@@ -1,0 +1,1114 @@
+/**
+ * Lopez Framework - Admin Stylesheet
+ *
+ * File ini berisi semua styling untuk halaman admin Lopez Framework.
+ * Struktur file dibagi menjadi beberapa section untuk memudahkan maintenance.
+ *
+ * DAFTAR ISI:
+ * 1. LAYOUT UTAMA - Struktur dasar halaman admin
+ * 2. SIDEBAR - Navigasi samping kiri
+ * 3. CONTENT AREA - Area konten utama
+ * 4. FIELD CARDS - Kartu untuk setiap field
+ * 5. GROUP HEADERS - Header untuk grouping field
+ * 6. IMAGE PREVIEW - Preview gambar
+ * 7. REPEATER - Field repeater
+ * 8. FORM ACTIONS - Tombol submit dan reset
+ * 9. WYSIWYG EDITOR - Editor visual
+ * 10. RESPONSIVE - Media queries untuk responsif
+ *
+ * @package    Lopez Framework
+ * @author     Yoga Krisna
+ * @copyright  2024 Juara Holding Group
+ * @since      1.0.0
+ */
+
+/* ==========================================================================
+   1. LAYOUT UTAMA
+   Struktur dasar halaman admin dengan flexbox layout
+   ========================================================================== */
+
+/**
+ * Container utama halaman admin
+ * Menggunakan flexbox untuk layout sidebar + content
+ */
+.lpz-wrap {
+    display: flex;
+    gap: 0;
+    margin: 20px 20px 20px 0;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+}
+
+/**
+ * Sembunyikan semua notice dari plugin lain di dalam lpz-wrap
+ * Notice dari WordFence, cache plugins, dll tidak akan muncul di sidebar/content
+ * Notice hanya tampil di atas (sebelum lpz-wrap) sesuai standar WordPress
+ */
+.lpz-wrap .notice,
+.lpz-wrap .updated,
+.lpz-wrap .error,
+.lpz-wrap .warning,
+.lpz-wrap .info,
+.lpz-wrap [class*="notice-"],
+.lpz-sidebar .notice,
+.lpz-sidebar .updated,
+.lpz-sidebar .error,
+.lpz-sidebar .warning,
+.lpz-sidebar .info,
+.lpz-sidebar [class*="notice-"] {
+    display: none !important;
+}
+
+/**
+ * Override styling notice WordPress di atas lpz-wrap
+ * Memberikan warna hijau untuk notifikasi sukses LPZ
+ */
+.wrap > .notice {
+    background: #277300 !important;
+    border: 1px solid #c3c4c7;
+    border-left-width: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin: 5px 15px 15px 0;
+    padding: 1px 12px;
+}
+
+/**
+ * Styling untuk notice error
+ */
+.wrap > .notice-error,
+.wrap > .error {
+    background: #d63638 !important;
+    border-left-color: #d63638;
+}
+
+/**
+ * Styling untuk notice warning
+ */
+.wrap > .notice-warning,
+.wrap > .warning {
+    background: #dba617 !important;
+    border-left-color: #dba617;
+}
+
+/**
+ * Styling untuk notice info
+ */
+.wrap > .notice-info,
+.wrap > .info {
+    background: #72aee6 !important;
+    border-left-color: #72aee6;
+}
+
+/**
+ * Warna text notice
+ */
+.wrap > .notice p {
+    color: #fff;
+}
+
+.wrap > .notice a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   2. SIDEBAR
+   Navigasi samping kiri dengan daftar halaman/section
+   ========================================================================== */
+
+/**
+ * Container sidebar
+ * Background gelap sesuai style WordPress modern
+ */
+.lpz-sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: #1d2327;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/**
+ * Header sidebar
+ * Berisi logo, judul, dan search box
+ */
+.lpz-sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/**
+ * Judul sidebar "Pages"
+ */
+.lpz-sidebar-header h2 {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --------------------------------------------------------------------------
+   2.1 SEARCH BOX - Pencarian halaman di sidebar
+   -------------------------------------------------------------------------- */
+
+/**
+ * Container search dengan icon
+ */
+.lpz-search {
+    position: relative;
+}
+
+/**
+ * Input search
+ * Background semi-transparan dengan border radius
+ */
+.lpz-search input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 13px;
+}
+
+/**
+ * Placeholder search input
+ */
+.lpz-search input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/**
+ * Focus state search input
+ */
+.lpz-search input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/**
+ * Icon search (dashicons)
+ * Posisi absolute di dalam input
+ */
+.lpz-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   2.2 PAGE LIST - Daftar halaman/section
+   -------------------------------------------------------------------------- */
+
+/**
+ * Container list halaman
+ * Scrollable jika terlalu banyak halaman
+ */
+.lpz-pages {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/**
+ * Custom scrollbar untuk list halaman
+ */
+.lpz-pages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lpz-pages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lpz-pages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/**
+ * Item halaman
+ */
+.lpz-page-item {
+    margin: 0;
+}
+
+/**
+ * Link halaman
+ * Flexbox untuk align icon, text, dan badge
+ */
+.lpz-page-item a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 13px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+}
+
+/**
+ * Hover state link halaman
+ */
+.lpz-page-item a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+/**
+ * Active state - halaman yang sedang dipilih
+ * Border biru di kiri sebagai indikator
+ */
+.lpz-page-item.active a {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left-color: #2271b1;
+}
+
+/**
+ * Icon halaman (dashicons)
+ */
+.lpz-page-icon {
+    margin-right: 10px;
+    opacity: 0.7;
+}
+
+/**
+ * Badge jumlah field
+ * Menampilkan berapa banyak field di halaman tersebut
+ */
+.lpz-page-count {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/**
+ * Badge jumlah field untuk halaman aktif
+ */
+.lpz-page-item.active .lpz-page-count {
+    background: #2271b1;
+    color: #fff;
+}
+
+/**
+ * Pesan "No pages found" saat search tidak menemukan hasil
+ */
+.lpz-no-results {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    display: none;
+}
+
+/* ==========================================================================
+   3. CONTENT AREA
+   Area konten utama di sebelah kanan sidebar
+   ========================================================================== */
+
+/**
+ * Container konten utama
+ * Flex: 1 untuk mengisi sisa ruang
+ */
+.lpz-content {
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+}
+
+/**
+ * Header konten
+ * Menampilkan judul halaman dan jumlah field
+ */
+.lpz-content-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f9f9f9;
+}
+
+/**
+ * Judul halaman di content header
+ */
+.lpz-content-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+/**
+ * Deskripsi/subtitle di content header
+ */
+.lpz-content-header p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+}
+
+/**
+ * Body konten
+ * Area scrollable untuk menampilkan field cards
+ */
+.lpz-content-body {
+    padding: 20px 30px;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   4. FIELD CARDS
+   Kartu untuk setiap field input
+   ========================================================================== */
+
+/**
+ * Container field card
+ * Border berubah warna saat hover
+ */
+.lpz-field-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    transition: border-color 0.15s ease;
+}
+
+/**
+ * Field card terakhir di dalam group tidak perlu margin bottom
+ */
+.lpz-group-content .lpz-field-card:last-child {
+    margin-bottom: 0;
+}
+
+/**
+ * Hover state field card
+ * Border berubah menjadi biru WordPress
+ */
+.lpz-field-card:hover {
+    border-color: #2271b1;
+}
+
+/**
+ * Header field card
+ * Menampilkan label dan badge tipe field
+ */
+.lpz-field-card-header {
+    padding: 12px 15px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/**
+ * Hover state header field card
+ */
+.lpz-field-card-header:hover {
+    background: #f0f0f0;
+}
+
+/**
+ * Label field (nama field)
+ */
+.lpz-field-label {
+    font-weight: 500;
+    color: #1d2327;
+    font-size: 13px;
+}
+
+/**
+ * Badge tipe field (text, image, wysiwyg, dll)
+ */
+.lpz-field-type {
+    font-size: 11px;
+    color: #666;
+    background: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+/**
+ * Body field card
+ * Area untuk input field
+ */
+.lpz-field-card-body {
+    padding: 15px;
+}
+
+/**
+ * Styling input di dalam field card
+ * Full width untuk semua tipe input
+ */
+.lpz-field-card-body input[type="text"],
+.lpz-field-card-body input[type="url"],
+.lpz-field-card-body input[type="number"],
+.lpz-field-card-body textarea,
+.lpz-field-card-body select {
+    width: 100%;
+    max-width: 100%;
+}
+
+/**
+ * Textarea dengan minimum height dan resizable
+ */
+.lpz-field-card-body textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/**
+ * Deskripsi/help text di bawah field
+ */
+.lpz-field-description {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   5. GROUP HEADERS
+   Header untuk mengelompokkan field berdasarkan kategori
+   ========================================================================== */
+
+/**
+ * Header group
+ * Background gradient biru, clickable untuk collapse/expand
+ */
+.lpz-group-header {
+    background: linear-gradient(135deg, #2271b1 0%, #135e96 100%);
+    color: #fff;
+    padding: 12px 15px;
+    margin: 25px 0 0 0;
+    border-radius: 4px 4px 0 0;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+/**
+ * Hover state group header
+ * Background sedikit lebih gelap
+ */
+.lpz-group-header:hover {
+    background: linear-gradient(135deg, #1e6aa8 0%, #104d7a 100%);
+}
+
+/**
+ * Group header pertama tidak perlu margin top
+ */
+.lpz-group-header:first-child {
+    margin-top: 0;
+}
+
+/**
+ * Icon toggle (panah) untuk collapse/expand
+ */
+.lpz-group-header .group-toggle {
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+/**
+ * Group header dalam keadaan collapsed
+ * Border radius penuh karena content disembunyikan
+ */
+.lpz-group-header.collapsed {
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/**
+ * Icon toggle saat collapsed
+ * Rotasi -90 derajat (panah ke kanan)
+ */
+.lpz-group-header.collapsed .group-toggle {
+    transform: rotate(-90deg);
+}
+
+/**
+ * Container konten group
+ * Berisi field cards
+ */
+.lpz-group-content {
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+
+/**
+ * Group content dalam keadaan collapsed
+ */
+.lpz-group-content.collapsed {
+    display: none;
+}
+
+/* ==========================================================================
+   6. IMAGE PREVIEW
+   Preview gambar untuk field image dan image_url
+   ========================================================================== */
+
+/**
+ * Container preview gambar
+ * Max width/height untuk menjaga proporsi
+ */
+.lpz-image-preview {
+    max-width: 200px;
+    max-height: 150px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    background: #f9f9f9;
+}
+
+/**
+ * Gambar di dalam preview
+ */
+.lpz-image-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+
+/**
+ * Container tombol upload/remove image
+ */
+.lpz-image-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   7. REPEATER
+   Field repeater untuk input multiple items
+   ========================================================================== */
+
+/**
+ * Item repeater
+ * Setiap item memiliki background berbeda dan tombol remove
+ */
+.lpz-repeater-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/**
+ * Tombol remove item (X)
+ * Posisi absolute di pojok kanan atas
+ */
+.lpz-repeater-item .remove-item {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #a00;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/**
+ * Hover state tombol remove
+ */
+.lpz-repeater-item .remove-item:hover {
+    color: #dc3232;
+}
+
+/**
+ * Input di dalam repeater item
+ * Margin bottom untuk spacing antar subfield
+ */
+.lpz-repeater-item input,
+.lpz-repeater-item textarea {
+    margin-bottom: 8px;
+}
+
+/**
+ * Tombol add item
+ */
+.lpz-add-item {
+    margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   7.1 NESTED REPEATER - Repeater di dalam repeater
+   -------------------------------------------------------------------------- */
+
+/**
+ * Container nested repeater
+ */
+.lpz-nested-repeater {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+/**
+ * Item nested repeater
+ */
+.lpz-nested-repeater-item {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/**
+ * Tombol remove nested item
+ */
+.lpz-nested-repeater-item .remove-nested-item {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #a00;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/**
+ * Hover state tombol remove nested item
+ */
+.lpz-nested-repeater-item .remove-nested-item:hover {
+    color: #dc3232;
+}
+
+/* ==========================================================================
+   8. FORM ACTIONS
+   Tombol submit dan reset di bagian bawah form
+   ========================================================================== */
+
+/**
+ * Container actions
+ * Flexbox dengan justify-content space-between
+ */
+.lpz-actions {
+    padding: 20px 30px;
+    background: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**
+ * Tombol primary (Save Changes)
+ */
+.lpz-actions .button-primary {
+    padding: 8px 20px;
+    height: auto;
+}
+
+/**
+ * Link reset to defaults
+ */
+.lpz-reset-link {
+    color: #a00;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/**
+ * Hover state link reset
+ */
+.lpz-reset-link:hover {
+    color: #dc3232;
+}
+
+/* ==========================================================================
+   9. WYSIWYG EDITOR
+   Styling untuk WordPress visual editor (TinyMCE)
+   ========================================================================== */
+
+/**
+ * Container WordPress editor
+ */
+.wp-editor-wrap {
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE
+   Media queries untuk tampilan responsif
+   ========================================================================== */
+
+/**
+ * Tablet landscape (max-width: 1200px)
+ * Sidebar menjadi lebih kecil
+ */
+@media screen and (max-width: 1200px) {
+    .lpz-sidebar {
+        width: 240px;
+        min-width: 240px;
+    }
+}
+
+/**
+ * Tablet portrait / Mobile (max-width: 960px)
+ * Layout berubah menjadi vertikal (stacked)
+ */
+@media screen and (max-width: 960px) {
+    /* Layout berubah dari horizontal ke vertikal */
+    .lpz-wrap {
+        flex-direction: column;
+    }
+
+    /* Sidebar menjadi full width */
+    .lpz-sidebar {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    /* List halaman dibatasi tingginya */
+    .lpz-pages {
+        max-height: 200px;
+    }
+}
+
+/* ==========================================================================
+   11. SUBFIELD STYLING
+   Styling untuk subfield di dalam repeater
+   ========================================================================== */
+
+/**
+ * Container subfield
+ */
+.lpz-subfield {
+    margin-bottom: 12px;
+}
+
+/**
+ * Label subfield
+ */
+.lpz-subfield label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+/**
+ * Label subfield di nested repeater
+ * Font lebih kecil
+ */
+.lpz-nested-repeater-item .lpz-subfield label {
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   12. UTILITY CLASSES
+   Class utilitas yang bisa digunakan di berbagai tempat
+   ========================================================================== */
+
+/**
+ * Hide element
+ */
+.lpz-hidden {
+    display: none !important;
+}
+
+/**
+ * Full width element
+ */
+.lpz-full-width {
+    width: 100% !important;
+}
+
+/**
+ * Text center
+ */
+.lpz-text-center {
+    text-align: center;
+}
+
+/**
+ * Margin top auto (untuk push ke bawah di flexbox)
+ */
+.lpz-mt-auto {
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   13. GALLERY FIELD
+   Field gallery untuk multiple image selection dengan drag & drop
+   ========================================================================== */
+
+/**
+ * Wrapper gallery field
+ * Container utama untuk gallery picker
+ */
+.lpz-gallery-wrapper {
+    width: 100%;
+}
+
+/**
+ * Container gallery dengan grid layout
+ * Menampilkan gambar-gambar dalam grid responsive
+ */
+.lpz-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    min-height: 150px;
+    margin-bottom: 10px;
+}
+
+/**
+ * State kosong gallery
+ * Tampilkan placeholder text saat tidak ada gambar
+ */
+.lpz-gallery-container:empty::before {
+    content: 'No images selected. Click "+ Add Images" to add gallery images.';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-style: italic;
+    font-size: 13px;
+    grid-column: 1 / -1;
+    min-height: 100px;
+}
+
+/**
+ * Individual gallery item
+ * Setiap gambar dalam gallery
+ */
+.lpz-gallery-item {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+/**
+ * Hover state gallery item
+ * Border berubah warna saat hover
+ */
+.lpz-gallery-item:hover {
+    border-color: #2271b1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Dragging state
+ * Saat item sedang di-drag
+ */
+.lpz-gallery-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/**
+ * Gambar di dalam gallery item
+ * Aspect ratio 1:1 (square) dengan object-fit cover
+ */
+.lpz-gallery-item-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+}
+
+/**
+ * Overlay untuk tombol remove
+ * Muncul saat hover
+ */
+.lpz-gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+/**
+ * Tampilkan overlay saat hover
+ */
+.lpz-gallery-item:hover .lpz-gallery-item-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/**
+ * Tombol remove image
+ * Bulat merah dengan icon X
+ */
+.lpz-gallery-item-remove {
+    background: #dc3232;
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/**
+ * Hover state tombol remove
+ */
+.lpz-gallery-item-remove:hover {
+    background: #a00;
+    transform: scale(1.1);
+}
+
+/**
+ * Container alt text input
+ * Di bawah gambar
+ */
+.lpz-gallery-item-alt {
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+}
+
+/**
+ * Input alt text
+ */
+.lpz-gallery-item-alt input {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 11px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 0 !important;
+}
+
+/**
+ * Focus state alt text input
+ */
+.lpz-gallery-item-alt input:focus {
+    border-color: #2271b1;
+    outline: none;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+/**
+ * Placeholder alt text input
+ */
+.lpz-gallery-item-alt input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/**
+ * Tombol add images
+ */
+.lpz-gallery-add {
+    margin-top: 5px;
+}
+
+/**
+ * Drag placeholder
+ * Tampilan saat ada item yang di-drag over
+ */
+.lpz-gallery-item.drag-over {
+    border-color: #2271b1;
+    border-style: solid;
+    background: #e5f3ff;
+}
+
+/**
+ * Index badge (opsional)
+ * Menampilkan nomor urut gambar
+ */
+.lpz-gallery-item-index {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   13.1 GALLERY RESPONSIVE
+   Responsive adjustments untuk gallery
+   -------------------------------------------------------------------------- */
+
+/**
+ * Tablet: kolom lebih kecil
+ */
+@media screen and (max-width: 1200px) {
+    .lpz-gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+}
+
+/**
+ * Mobile: kolom minimum 80px
+ */
+@media screen and (max-width: 600px) {
+    .lpz-gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .lpz-gallery-item-alt {
+        padding: 6px;
+    }
+
+    .lpz-gallery-item-alt input {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}

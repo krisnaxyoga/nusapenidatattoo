@@ -4,104 +4,53 @@
  * The template for displaying the portfolio gallery
  */
 
-get_template_part('template-parts/header'); ?>
+get_template_part('template-parts/header');
+
+// Gallery wording dari Theme Wording panel (bukan Customizer lagi)
+$gallery_page = lpz_page_gallery();
+$gallery_items = $gallery_page['images']; // [ ['id', 'url', 'alt'], ... ]
+?>
 
 <!-- Gallery Hero Section -->
 <section class="min-h-[60vh] flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-dark">
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
         <h1 class="text-5xl md:text-7xl font-bold mb-6 text-[#f5f5f5] animate-fade-in-up">
-            Our <span class="text-gradient">Gallery</span>
+            <?php echo esc_html($gallery_page['hero']['title']); ?>
         </h1>
+        <?php if (!empty($gallery_page['hero']['subtitle'])) : ?>
         <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-            Explore our collection of custom tattoo designs — each piece tells a unique story
+            <?php echo esc_html($gallery_page['hero']['subtitle']); ?>
         </p>
+        <?php endif; ?>
     </div>
 </section>
 
 <!-- Gallery Grid Section -->
 <section class="py-20 px-4 bg-gradient-dark">
     <div class="max-w-7xl mx-auto">
+        <?php if (!empty($gallery_items)) : ?>
         <div class="gallery-grid">
-            <?php
-            // Get all portfolio images from customizer
-            $gallery_items = [];
-            for ($i = 1; $i <= 6; $i++) {
-                $img_id = get_theme_mod("nusatatto_portfolio_img{$i}", '');
-                if ($img_id) {
-                    $img_url = wp_get_attachment_image_url($img_id, 'full');
-                    $img_title = get_theme_mod("nusatatto_portfolio_img{$i}_title", 'Portfolio Image ' . $i);
-                    $img_desc = get_theme_mod("nusatatto_portfolio_img{$i}_desc", '');
-                    $gallery_items[] = [
-                        'url' => $img_url,
-                        'title' => $img_title,
-                        'desc' => $img_desc
-                    ];
-                }
-            }
-
-            // If no customizer images, use default portfolio images
-            if (empty($gallery_items)) {
-                for ($i = 1; $i <= 6; $i++) {
-                    $img_path = get_template_directory() . "/assets/images/portfolio-{$i}.jpg";
-                    if (file_exists($img_path)) {
-                        $gallery_items[] = [
-                            'url' => get_template_directory_uri() . "/assets/images/portfolio-{$i}.jpg",
-                            'title' => "Portfolio Image {$i}",
-                            'desc' => ''
-                        ];
-                    }
-                }
-            }
-
-            // If still no gallery items, create placeholders
-            if (empty($gallery_items)) {
-                for ($i = 1; $i <= 6; $i++) {
-                    $gallery_items[] = [
-                        'url' => '',
-                        'title' => 'Gallery Placeholder',
-                        'desc' => 'Upload images via WordPress Customizer → Portfolio Settings'
-                    ];
-                }
-            }
-
-            // Display gallery items
-            $index = 0;
-            foreach ($gallery_items as $item) :
-                $delay = ($index % 6) * 0.1;
-            ?>
-            <div class="gallery-item stagger-item" <?php echo !empty($item['url']) ? 'onclick="openModal(' . $index . ')"' : ''; ?>>
-                <?php if (!empty($item['url'])) : ?>
+            <?php foreach ($gallery_items as $index => $item) : ?>
+            <div class="gallery-item stagger-item" onclick="openModal(<?php echo (int) $index; ?>)">
                 <img src="<?php echo esc_url($item['url']); ?>"
-                     alt="<?php echo esc_attr($item['title']); ?>"
+                     alt="<?php echo esc_attr($item['alt']); ?>"
                      loading="lazy">
-                <?php else : ?>
-                <!-- Placeholder -->
-                <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 p-4">
-                    <svg class="w-16 h-16 text-gray-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <p class="text-sm text-gray-500 text-center">No Image</p>
-                </div>
-                <?php endif; ?>
                 <div class="gallery-overlay">
                     <div class="text-center text-[#f5f5f5]">
-                        <?php if ($item['title']) : ?>
-                        <div class="text-lg font-semibold mb-2"><?php echo esc_html($item['title']); ?></div>
+                        <?php if (!empty($item['alt'])) : ?>
+                        <div class="text-lg font-semibold mb-2"><?php echo esc_html($item['alt']); ?></div>
                         <?php endif; ?>
-                        <?php if ($item['desc']) : ?>
-                        <div class="text-sm text-gray-300 mb-4"><?php echo esc_html($item['desc']); ?></div>
-                        <?php endif; ?>
-                        <?php if (!empty($item['url'])) : ?>
                         <div class="text-[#d4af37] text-sm font-semibold">Click to View</div>
-                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-            <?php
-                $index++;
-            endforeach;
-            ?>
+            <?php endforeach; ?>
         </div>
+        <?php else : ?>
+        <div class="text-center glass-lg p-12 rounded-2xl">
+            <p class="text-gray-300 text-lg">Belum ada gambar. Tambahkan melalui menu <strong>Theme Wording &rarr; Gallery Page</strong>.</p>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -130,7 +79,6 @@ get_template_part('template-parts/header'); ?>
         <!-- Caption -->
         <div class="modal-caption">
             <h3 id="modalTitle" class="text-2xl font-bold text-[#f5f5f5] mb-2"></h3>
-            <p id="modalDesc" class="text-gray-300"></p>
         </div>
     </div>
 </div>
@@ -264,16 +212,14 @@ function updateModalImage() {
     const item = galleryData[currentImageIndex];
     const modalImage = document.getElementById('modalImage');
     const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    
+
     // Fade out
     modalImage.style.opacity = '0';
-    
+
     setTimeout(() => {
         modalImage.src = item.url;
-        modalTitle.textContent = item.title;
-        modalDesc.textContent = item.desc;
-        
+        modalTitle.textContent = item.alt || '';
+
         // Fade in
         modalImage.style.opacity = '1';
     }, 150);

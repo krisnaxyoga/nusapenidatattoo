@@ -95,7 +95,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <!-- CTA Button Desktop -->
                 <?php
                 $whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
-                $whatsapp_url = 'https://wa.me/' . $whatsapp . '?text=Hello,%20I%20want%20to%20book%20a%20tattoo%20session';
+                $whatsapp_url = 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Hi nusapenidatattoo.com, I want to book a tattoo session');
                 ?>
                 <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="hidden md:block glass px-6 py-2 rounded-full hover:bg-[#d4af37] hover:text-[#0f0f0f] transition-all">
                     Contact
