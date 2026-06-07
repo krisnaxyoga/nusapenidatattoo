@@ -326,16 +326,6 @@ $about_img_url = $about_img_id ? wp_get_attachment_image_url($about_img_id, 'ful
                     </div>
                     <div class="flex gap-4">
                         <svg class="flex-shrink-0 mt-1 text-[#d4af37] w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-10 5L2 7"/>
-                        </svg>
-                        <div>
-                            <div class="font-semibold text-[#f5f5f5]">Email</div>
-                            <div><a href="mailto:<?php echo esc_attr($email); ?>" class="hover:text-[#d4af37] transition-colors"><?php echo esc_html($email); ?></a></div>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <svg class="flex-shrink-0 mt-1 text-[#d4af37] w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                             <line x1="16" y1="2" x2="16" y2="6"/>
                             <line x1="8" y1="2" x2="8" y2="6"/>
@@ -357,7 +347,10 @@ $about_img_url = $about_img_id ? wp_get_attachment_image_url($about_img_id, 'ful
             </div>
             <div class="rounded-2xl overflow-hidden glass h-[450px]">
                 <?php
-                $google_maps_url = w('home_map_embed');
+                // DWIKI TATTOO map embed — dipakai sebagai fallback agar peta selalu tampil
+                // walau field wording belum tersimpan/ter-deploy.
+                $map_default = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.725387926036!2d115.48627867425559!3d-8.688486688492038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd27362a09af4b3%3A0x70c52eca4430326f!2sDWIKI%20TATTOO!5e1!3m2!1sen!2sid!4v1780812458579!5m2!1sen!2sid';
+                $google_maps_url = w('home_map_embed', $map_default);
 
                 if (!empty($google_maps_url) && filter_var($google_maps_url, FILTER_VALIDATE_URL)) {
                     ?>

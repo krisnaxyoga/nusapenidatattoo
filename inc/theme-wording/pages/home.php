@@ -249,9 +249,9 @@ function lpz_page_home_fields() {
             ],
             'home_map_embed' => [
                 'label'       => 'Google Maps Embed URL',
-                'type'        => 'url',
+                'type'        => 'textarea',
                 'default'     => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.725387926036!2d115.48627867425559!3d-8.688486688492038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd27362a09af4b3%3A0x70c52eca4430326f!2sDWIKI%20TATTOO!5e1!3m2!1sen!2sid!4v1780812458579!5m2!1sen!2sid',
-                'description' => 'Tempel hanya URL dari atribut src="..." pada kode embed Google Maps.',
+                'description' => 'Tempel hanya URL dari atribut src="..." pada kode embed Google Maps (bukan seluruh tag iframe).',
                 'group'       => 'Location',
             ],
 

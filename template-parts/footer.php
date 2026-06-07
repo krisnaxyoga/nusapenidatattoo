@@ -67,8 +67,8 @@
                     <div class="flex gap-4">
                         <?php
                         $facebook = get_theme_mod('nusatatto_facebook', '');
-                        $instagram = get_theme_mod('nusatatto_instagram', '');
-                        $tiktok = get_theme_mod('nusatatto_tiktok', '');
+                        $instagram = get_theme_mod('nusatatto_instagram', 'https://www.instagram.com/dwiki_balinusa');
+                        $tiktok = get_theme_mod('nusatatto_tiktok', 'https://www.tiktok.com/@dwiki_balinusa?is_from_webapp=1&sender_device=pc');
                         $whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
 
                         if ($facebook) : ?>
@@ -112,7 +112,6 @@
                     $address = get_theme_mod('nusatatto_address', 'Jl. Raya Nusa Penida, Bali 80771');
                     ?>
                     <p class="text-sm text-gray-400 mb-2"><?php echo esc_html($phone); ?></p>
-                    <p class="text-sm text-gray-400 mb-2"><?php echo esc_html($email); ?></p>
                     <p class="text-sm text-gray-400"><?php echo esc_html($address); ?></p>
                 </div>
             </div>
@@ -168,8 +167,8 @@
         <?php
         // Get contact info from customizer
         $facebook = get_theme_mod('nusatatto_facebook', '');
-        $instagram = get_theme_mod('nusatatto_instagram', '');
-        $tiktok = get_theme_mod('nusatatto_tiktok', '');
+        $instagram = get_theme_mod('nusatatto_instagram', 'https://www.instagram.com/dwiki_balinusa');
+        $tiktok = get_theme_mod('nusatatto_tiktok', 'https://www.tiktok.com/@dwiki_balinusa?is_from_webapp=1&sender_device=pc');
         $whatsapp = get_theme_mod('nusatatto_whatsapp', '6285792283479');
         $email = get_theme_mod('nusatatto_email', 'info@nusapenidatattoo.com');
         $google_maps = get_theme_mod('nusatatto_google_maps', '');
@@ -226,18 +225,6 @@
         </div>
         <?php endif; ?>
 
-        <!-- Email -->
-        <?php if ($email) : ?>
-        <div class="floating-contact-item" data-delay="0.3">
-            <span class="floating-contact-label">Email</span>
-            <a href="mailto:<?php echo esc_attr($email); ?>" 
-               class="floating-contact-btn floating-btn-email" aria-label="Email">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-            </a>
-        </div>
-        <?php endif; ?>
 
         <!-- Google Maps -->
         <?php if ($google_maps) : ?>

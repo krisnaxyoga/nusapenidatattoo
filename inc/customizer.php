@@ -186,7 +186,7 @@ function nusatatto_customize_register($wp_customize) {
 
     // Instagram
     $wp_customize->add_setting('nusatatto_instagram', [
-        'default'           => '',
+        'default'           => 'https://www.instagram.com/dwiki_balinusa',
         'sanitize_callback' => 'esc_url_raw',
     ]);
 
@@ -198,7 +198,7 @@ function nusatatto_customize_register($wp_customize) {
 
     // TikTok
     $wp_customize->add_setting('nusatatto_tiktok', [
-        'default'           => '',
+        'default'           => 'https://www.tiktok.com/@dwiki_balinusa?is_from_webapp=1&sender_device=pc',
         'sanitize_callback' => 'esc_url_raw',
     ]);
 
