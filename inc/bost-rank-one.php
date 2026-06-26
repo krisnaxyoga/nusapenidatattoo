@@ -276,7 +276,7 @@ function bostrank_schema_homepage() {
       "@id": "https://nusapenidatattoo.com/#website",
       "url": "https://nusapenidatattoo.com/",
       "name": "Nusa Penida Tattoo",
-      "description": "Tattoo studio in Nusa Penida, Bali — fine-line, minimalist and custom Balinese tattoos for travelers. Walk-ins welcome, prices from IDR 600,000.",
+      "description": "Tattoo studio in Nusa Penida, Bali — fine-line, minimalist and custom Balinese tattoos for travelers. Walk-ins welcome.",
       "publisher": { "@id": "https://nusapenidatattoo.com/#tattoo-studio" },
       "inLanguage": "en"
     },
@@ -291,10 +291,8 @@ function bostrank_schema_homepage() {
         "https://nusapenidatattoo.com/wp-content/uploads/2025/10/anime-tatto-naruto-nusapenidattato.webp",
         "https://nusapenidatattoo.com/wp-content/uploads/2025/10/manta-animal-and-traditional-balinese-tatto-nusapenidatto.webp"
       ],
-      "description": "Nusa Penida Tattoo is a professional, fully-sterile tattoo studio on Nusa Penida island, Bali, specializing in fine-line, minimalist, blackwork and custom Balinese-inspired tattoos for international travelers. Walk-ins welcome, English-speaking artists, prices from IDR 600,000.",
+      "description": "Nusa Penida Tattoo is a professional, fully-sterile tattoo studio on Nusa Penida island, Bali, specializing in fine-line, minimalist, blackwork and custom Balinese-inspired tattoos for international travelers. Walk-ins welcome, English-speaking artists.",
       "slogan": "Ink Your Island Story",
-      "priceRange": "IDR 600.000 - IDR 5.000.000",
-      "currenciesAccepted": "IDR",
       "paymentAccepted": "Cash, QRIS, Bank Transfer",
       "telephone": "+6285792283479",
       "email": "info@nusapenidatattoo.com",
@@ -344,18 +342,14 @@ function bostrank_schema_homepage() {
       "makesOffer": [
         {
           "@type": "Offer",
-          "priceCurrency": "IDR",
-          "price": "600000",
           "itemOffered": {
             "@type": "Service",
             "name": "Fine-line & Minimalist Tattoo",
-            "description": "Delicate fine-line and minimalist tattoos, ideal for first-timers and travelers. Starting from IDR 600,000."
+            "description": "Delicate fine-line and minimalist tattoos, ideal for first-timers and travelers."
           }
         },
         {
           "@type": "Offer",
-          "priceCurrency": "IDR",
-          "price": "1200000",
           "itemOffered": {
             "@type": "Service",
             "name": "Blackwork & Tribal Tattoo",
@@ -364,8 +358,6 @@ function bostrank_schema_homepage() {
         },
         {
           "@type": "Offer",
-          "priceCurrency": "IDR",
-          "price": "1500000",
           "itemOffered": {
             "@type": "Service",
             "name": "Traditional Balinese & Custom Tattoo",
@@ -385,10 +377,10 @@ function bostrank_schema_homepage() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How much does a tattoo cost in Nusa Penida?",
+          "name": "Is a fine-line tattoo good for first-timers?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "At Nusa Penida Tattoo, small fine-line tattoos start from IDR 600,000. Medium pieces start around IDR 1,200,000 and larger work from IDR 2,500,000. The final price depends on size, detail and placement — we always confirm the exact quote on WhatsApp before starting."
+            "text": "Yes. Fine-line tattoos are ideal for first-time clients because they are minimalist, less painful and heal faster than larger tattoo styles. Our artists will guide you through design, size and placement during a friendly consultation."
           }
         },
         {

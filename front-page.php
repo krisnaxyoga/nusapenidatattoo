@@ -49,7 +49,7 @@ $hero_bg_url = $hero_bg_id ? wp_get_attachment_image_url($hero_bg_id, 'full') : 
             <ul class="grid sm:grid-cols-2 gap-3 text-gray-300 mb-8">
                 <li class="flex items-center gap-3"><span class="text-[#d4af37]">📍</span> <?php we('home_fact_1'); ?></li>
                 <li class="flex items-center gap-3"><span class="text-[#d4af37]">🕙</span> <?php we('home_fact_2'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">💸</span> <?php we('home_fact_3'); ?></li>
+                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🖋️</span> <?php we('home_fact_3'); ?></li>
                 <li class="flex items-center gap-3"><span class="text-[#d4af37]">✅</span> <?php we('home_fact_4'); ?></li>
                 <li class="flex items-center gap-3"><span class="text-[#d4af37]">🎨</span> <?php we('home_fact_5'); ?></li>
                 <li class="flex items-center gap-3"><span class="text-[#d4af37]">🗣️</span> <?php we('home_fact_6'); ?></li>
@@ -224,52 +224,6 @@ $about_img_url = $about_img_id ? wp_get_attachment_image_url($about_img_id, 'ful
                 <h3 class="text-xl font-semibold mb-3 text-[#f5f5f5]"><?php we('home_feature6_title'); ?></h3>
                 <p class="text-gray-300"><?php we('home_feature6_desc'); ?></p>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Tattoo Styles & Pricing — commercial intent + AI-extractable -->
-<section id="pricing" class="py-20 px-4 bg-gradient-dark">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold mb-4 text-[#f5f5f5]"><?php we('home_pricing_title'); ?></h2>
-            <p class="text-gray-300 max-w-2xl mx-auto"><?php we_html('home_pricing_intro'); ?></p>
-        </div>
-        <div class="glass-lg rounded-2xl overflow-x-auto">
-            <table class="w-full text-left min-w-[520px]">
-                <thead>
-                    <tr class="border-b border-white border-opacity-10 text-[#f5f5f5]">
-                        <th class="px-6 py-4 font-semibold">Size</th>
-                        <th class="px-6 py-4 font-semibold">Best for</th>
-                        <th class="px-6 py-4 font-semibold text-right">Starting price</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-300">
-                    <tr class="border-b border-white border-opacity-5">
-                        <td class="px-6 py-4 font-medium text-[#f5f5f5]"><?php we('home_price1_size'); ?></td>
-                        <td class="px-6 py-4"><?php we('home_price1_for'); ?></td>
-                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]"><?php we('home_price1_amount'); ?></td>
-                    </tr>
-                    <tr class="border-b border-white border-opacity-5">
-                        <td class="px-6 py-4 font-medium text-[#f5f5f5]"><?php we('home_price2_size'); ?></td>
-                        <td class="px-6 py-4"><?php we('home_price2_for'); ?></td>
-                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]"><?php we('home_price2_amount'); ?></td>
-                    </tr>
-                    <tr class="border-b border-white border-opacity-5">
-                        <td class="px-6 py-4 font-medium text-[#f5f5f5]"><?php we('home_price3_size'); ?></td>
-                        <td class="px-6 py-4"><?php we('home_price3_for'); ?></td>
-                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]"><?php we('home_price3_amount'); ?></td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 font-medium text-[#f5f5f5]"><?php we('home_price4_size'); ?></td>
-                        <td class="px-6 py-4"><?php we('home_price4_for'); ?></td>
-                        <td class="px-6 py-4 text-right font-bold text-[#d4af37]"><?php we('home_price4_amount'); ?></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center mt-8">
-            <a href="<?php echo $book_url; ?>" class="inline-block btn-glass-accent px-8 py-4 rounded-full font-semibold"><?php we('home_pricing_btn'); ?></a>
         </div>
     </div>
 </section>

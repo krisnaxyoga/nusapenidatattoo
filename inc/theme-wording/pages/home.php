@@ -59,7 +59,7 @@ function lpz_page_home_fields() {
             'home_intro_text' => [
                 'label'   => 'Intro Paragraph (HTML allowed)',
                 'type'    => 'wysiwyg',
-                'default' => '<strong>Nusa Penida Tattoo</strong> is a professional, fully-sterile tattoo studio on Nusa Penida island, Bali. We create custom <strong>fine-line, minimalist, blackwork and traditional Balinese tattoos</strong> for international travelers — with English-speaking artists, <strong>walk-ins welcome</strong>, and prices starting from <strong>IDR 600,000</strong>.',
+                'default' => '<strong>Nusa Penida Tattoo</strong> is a professional, fully-sterile tattoo studio on Nusa Penida island, Bali. We create custom <strong>fine-line, minimalist, blackwork and traditional Balinese tattoos</strong> for international travelers — with English-speaking artists and <strong>walk-ins welcome</strong>.',
                 'group'   => 'Intro (SEO)',
             ],
             'home_fact_1' => [
@@ -77,7 +77,7 @@ function lpz_page_home_fields() {
             'home_fact_3' => [
                 'label'   => 'Quick Fact 3',
                 'type'    => 'text',
-                'default' => 'Tattoos from IDR 600,000',
+                'default' => 'Custom & flash designs available',
                 'group'   => 'Intro (SEO)',
             ],
             'home_fact_4' => [
@@ -159,33 +159,6 @@ function lpz_page_home_fields() {
             'home_feature6_title' => ['label' => 'Feature 6 Title', 'type' => 'text', 'default' => 'Competitive Pricing', 'group' => 'Why Us'],
             'home_feature6_desc'  => ['label' => 'Feature 6 Text', 'type' => 'textarea', 'default' => 'Affordable pricing packages without sacrificing quality and professionalism in every work.', 'group' => 'Why Us'],
 
-            /* ========================== PRICING ========================== */
-            'home_pricing_title' => [
-                'label'   => 'Pricing Title',
-                'type'    => 'text',
-                'default' => 'Tattoo Styles & Starting Prices in Nusa Penida',
-                'group'   => 'Pricing',
-            ],
-            'home_pricing_intro' => [
-                'label'   => 'Pricing Intro (HTML allowed)',
-                'type'    => 'wysiwyg',
-                'default' => 'Transparent pricing with no hidden fees. Small fine-line tattoos start from <strong>IDR 600,000</strong> — the final quote depends on size, detail and placement, and we always confirm it before we start.',
-                'group'   => 'Pricing',
-            ],
-            'home_price1_size'   => ['label' => 'Row 1 Size', 'type' => 'text', 'default' => 'Small (up to 5 cm)', 'group' => 'Pricing'],
-            'home_price1_for'    => ['label' => 'Row 1 Best for', 'type' => 'text', 'default' => 'Fine-line, minimalist, lettering', 'group' => 'Pricing'],
-            'home_price1_amount' => ['label' => 'Row 1 Price', 'type' => 'text', 'default' => 'IDR 600,000', 'group' => 'Pricing'],
-            'home_price2_size'   => ['label' => 'Row 2 Size', 'type' => 'text', 'default' => 'Medium (6–10 cm)', 'group' => 'Pricing'],
-            'home_price2_for'    => ['label' => 'Row 2 Best for', 'type' => 'text', 'default' => 'Detailed fine-line, small blackwork', 'group' => 'Pricing'],
-            'home_price2_amount' => ['label' => 'Row 2 Price', 'type' => 'text', 'default' => 'IDR 1,200,000', 'group' => 'Pricing'],
-            'home_price3_size'   => ['label' => 'Row 3 Size', 'type' => 'text', 'default' => 'Large (11–20 cm)', 'group' => 'Pricing'],
-            'home_price3_for'    => ['label' => 'Row 3 Best for', 'type' => 'text', 'default' => 'Blackwork, tribal, Balinese', 'group' => 'Pricing'],
-            'home_price3_amount' => ['label' => 'Row 3 Price', 'type' => 'text', 'default' => 'IDR 2,500,000', 'group' => 'Pricing'],
-            'home_price4_size'   => ['label' => 'Row 4 Size', 'type' => 'text', 'default' => 'Half sleeve / custom', 'group' => 'Pricing'],
-            'home_price4_for'    => ['label' => 'Row 4 Best for', 'type' => 'text', 'default' => 'Large custom & Balinese pieces', 'group' => 'Pricing'],
-            'home_price4_amount' => ['label' => 'Row 4 Price', 'type' => 'text', 'default' => 'from IDR 5,000,000', 'group' => 'Pricing'],
-            'home_pricing_btn'   => ['label' => 'Pricing Button', 'type' => 'text', 'default' => 'See full price guide & book →', 'group' => 'Pricing'],
-
             /* ============================ FAQ ============================ */
             'home_faq_title' => [
                 'label'   => 'FAQ Title',
@@ -193,8 +166,8 @@ function lpz_page_home_fields() {
                 'default' => 'Frequently Asked Questions',
                 'group'   => 'FAQ',
             ],
-            'home_faq1_q' => ['label' => 'FAQ 1 Question', 'type' => 'text', 'default' => 'How much does a tattoo cost in Nusa Penida?', 'group' => 'FAQ'],
-            'home_faq1_a' => ['label' => 'FAQ 1 Answer', 'type' => 'textarea', 'default' => 'At Nusa Penida Tattoo, small fine-line tattoos start from IDR 600,000. Medium pieces start around IDR 1,200,000 and larger work from IDR 2,500,000. The final price depends on size, detail and placement — we always confirm the exact quote on WhatsApp before starting.', 'group' => 'FAQ'],
+            'home_faq1_q' => ['label' => 'FAQ 1 Question', 'type' => 'text', 'default' => 'Is a fine-line tattoo good for first-timers?', 'group' => 'FAQ'],
+            'home_faq1_a' => ['label' => 'FAQ 1 Answer', 'type' => 'textarea', 'default' => 'Yes. Fine-line tattoos are ideal for first-time clients because they are minimalist, less painful and heal faster than larger tattoo styles. Our artists will guide you through design, size and placement during a friendly consultation.', 'group' => 'FAQ'],
             'home_faq2_q' => ['label' => 'FAQ 2 Question', 'type' => 'text', 'default' => 'Do you accept walk-in tattoos in Nusa Penida?', 'group' => 'FAQ'],
             'home_faq2_a' => ['label' => 'FAQ 2 Answer', 'type' => 'textarea', 'default' => 'Yes, walk-ins are welcome every day from 10:00 AM to 9:00 PM. To guarantee your preferred time and artist, we recommend messaging us on WhatsApp first, especially during high season.', 'group' => 'FAQ'],
             'home_faq3_q' => ['label' => 'FAQ 3 Question', 'type' => 'text', 'default' => 'What tattoo styles does Nusa Penida Tattoo offer?', 'group' => 'FAQ'],
