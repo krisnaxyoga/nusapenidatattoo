@@ -93,7 +93,38 @@ $tags = get_the_tags();
     <div class="max-w-4xl mx-auto px-4">
         <div class="glass-lg rounded-2xl p-8 md:p-12">
             <!-- Main Content -->
-            <div class="prose prose-lg prose-invert max-w-none
+            <style>
+                /* === Pastikan SEMUA gambar konten artikel tampil tanpa batas === */
+                /* Lawan animasi lightbox core WP (.wp-block-image img.hide) yang
+                   bisa menyembunyikan gambar permanen bila skrip interaktivitas gagal. */
+                #post-content img {
+                    max-width: 100%;
+                    height: auto;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
+                #post-content .wp-block-image img.hide { visibility: visible !important; }
+
+                /* Galeri Gutenberg: render sebagai grid responsif agar SEMUA
+                   gambar di dalam galeri pasti tampil (tidak kolaps oleh flex). */
+                #post-content .wp-block-gallery.has-nested-images {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 1rem;
+                    margin: 2rem 0;
+                }
+                #post-content .wp-block-gallery.has-nested-images > figure {
+                    margin: 0 !important;
+                    width: auto !important;
+                }
+                #post-content .wp-block-gallery.has-nested-images img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border-radius: .5rem;
+                }
+            </style>
+            <div id="post-content" class="prose prose-lg prose-invert max-w-none
                     prose-headings:text-[#f5f5f5] prose-headings:font-bold
                     prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-gray-700 prose-h2:pb-3
                     prose-h3:text-2xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-[#d4af37]
