@@ -436,7 +436,7 @@ function bostrank_schema_homepage() {
           "name": "How do I book a tattoo appointment in Nusa Penida?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can book in seconds on our booking page or message us on WhatsApp at +62 857-9228-3479 before or during your visit to Nusa Penida."
+            "text": "Just message us on WhatsApp at +62 857-9228-3479 before or during your visit to Nusa Penida — tell us your idea, size and preferred date, and we will confirm your appointment."
           }
         }
       ]

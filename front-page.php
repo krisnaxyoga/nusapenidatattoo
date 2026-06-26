@@ -7,7 +7,6 @@ $phone    = get_theme_mod('nusatatto_phone', '+62 857-9228-3479');
 $email    = get_theme_mod('nusatatto_email', 'info@nusapenidatattoo.com');
 $address  = get_theme_mod('nusatatto_address', 'Jl. Raya Nusa Penida, Bali 80771');
 $tel_link = preg_replace('/[^0-9+]/', '', $phone);
-$book_url = esc_url(home_url('/book'));
 $wa_book  = 'https://wa.me/' . $whatsapp . '?text=' . rawurlencode('Hi nusapenidatattoo.com, I want to book a tattoo session');
 ?>
 
@@ -47,16 +46,36 @@ $hero_bg_url = $hero_bg_id ? wp_get_attachment_image_url($hero_bg_id, 'full') : 
                 <?php we_html('home_intro_text'); ?>
             </div>
             <ul class="grid sm:grid-cols-2 gap-3 text-gray-300 mb-8">
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">📍</span> <?php we('home_fact_1'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🕙</span> <?php we('home_fact_2'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🖋️</span> <?php we('home_fact_3'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">✅</span> <?php we('home_fact_4'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🎨</span> <?php we('home_fact_5'); ?></li>
-                <li class="flex items-center gap-3"><span class="text-[#d4af37]">🗣️</span> <?php we('home_fact_6'); ?></li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg>
+                    <?php we('home_fact_1'); ?>
+                </li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/></svg>
+                    <?php we('home_fact_2'); ?>
+                </li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"/><path d="M13.5 6.5l4 4"/></svg>
+                    <?php we('home_fact_3'); ?>
+                </li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M9 12l2 2l4 -4"/></svg>
+                    <?php we('home_fact_4'); ?>
+                </li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 0 1 0 -18a9 8 0 0 1 9 8a4.5 4 0 0 1 -4.5 4h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"/><path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
+                    <?php we('home_fact_5'); ?>
+                </li>
+                <li class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 text-[#d4af37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h7"/><path d="M9 3v2c0 4.418 -2.239 8 -5 8"/><path d="M5 9c0 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4 -9l4 9"/><path d="M19.1 18h-6.2"/></svg>
+                    <?php we('home_fact_6'); ?>
+                </li>
             </ul>
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="<?php echo $book_url; ?>" class="btn-glass-accent px-6 py-3 rounded-full font-semibold text-center"><?php we('home_hero_btn_primary'); ?></a>
-                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="glass px-6 py-3 rounded-full font-semibold text-center text-[#f5f5f5] hover:bg-[#25D366] hover:text-white transition-all">WhatsApp Us</a>
+                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="btn-glass-accent px-6 py-3 rounded-full font-semibold text-center inline-flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
+                    <?php we('home_hero_btn_primary'); ?>
+                </a>
             </div>
         </div>
     </div>
@@ -471,12 +490,10 @@ $tiktok_videos = [
         <div class="glass-lg p-12 rounded-2xl">
             <h2 class="text-4xl font-bold mb-6 text-[#f5f5f5]"><?php we('home_cta_title'); ?></h2>
             <p class="text-xl text-gray-300 mb-8"><?php we('home_cta_text'); ?></p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="<?php echo $book_url; ?>" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift">
+            <div class="flex justify-center">
+                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="btn-glass-accent px-8 py-4 rounded-full font-semibold hover-lift inline-flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
                     <?php we('home_cta_btn_primary'); ?>
-                </a>
-                <a href="<?php echo esc_url($wa_book); ?>" target="_blank" rel="noopener" class="glass-lg px-8 py-4 rounded-full font-semibold hover-lift text-[#f5f5f5]">
-                    <?php we('home_cta_btn_whatsapp'); ?>
                 </a>
             </div>
         </div>

@@ -181,7 +181,7 @@ function lpz_page_home_fields() {
             'home_faq7_q' => ['label' => 'FAQ 7 Question', 'type' => 'text', 'default' => 'Can I bring my own tattoo design?', 'group' => 'FAQ'],
             'home_faq7_a' => ['label' => 'FAQ 7 Answer', 'type' => 'textarea', 'default' => 'Absolutely. You can bring your own design or idea, and our artists will refine it or create a fully custom piece that fits your story.', 'group' => 'FAQ'],
             'home_faq8_q' => ['label' => 'FAQ 8 Question', 'type' => 'text', 'default' => 'How do I book a tattoo appointment in Nusa Penida?', 'group' => 'FAQ'],
-            'home_faq8_a' => ['label' => 'FAQ 8 Answer', 'type' => 'textarea', 'default' => 'You can book in seconds on our booking page or message us on WhatsApp before or during your visit to Nusa Penida.', 'group' => 'FAQ'],
+            'home_faq8_a' => ['label' => 'FAQ 8 Answer', 'type' => 'textarea', 'default' => 'Just message us on WhatsApp before or during your visit to Nusa Penida — tell us your idea, size and preferred date, and we will confirm your appointment.', 'group' => 'FAQ'],
 
             /* ========================== LOCATION ========================= */
             'home_location_title' => [
