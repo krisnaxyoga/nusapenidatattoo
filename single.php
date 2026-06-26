@@ -114,7 +114,13 @@ $tags = get_the_tags();
                     prose-td:border prose-td:border-gray-700 prose-td:px-4 prose-td:py-3
                     prose-hr:border-gray-700 prose-hr:my-8">
                 <?php
-                $content = get_the_content();
+                // Ambil SELURUH isi postingan langsung dari post_content agar
+                // tidak terpotong oleh <!--more--> / <!--nextpage--> (page break).
+                // Dengan begitu semua gambar tampil tanpa batas, berapa pun jumlahnya.
+                $post_object = get_post();
+                $content = $post_object ? $post_object->post_content : get_the_content();
+                // Tetap lewatkan filter the_content supaya blok Gutenberg,
+                // shortcode [gallery], embed, dan semua <img> ter-render penuh.
                 $content = apply_filters('the_content', $content);
                 $content = str_replace(']]>', ']]&gt;', $content);
                 echo $content;
